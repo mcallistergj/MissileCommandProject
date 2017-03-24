@@ -1,0 +1,23 @@
+﻿<Window x:Class="mcallistergcscd371missilecommand.OptionsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:mcallistergcscd371missilecommand"
+        mc:Ignorable="d"
+        Title="Options" Height="319" Width="328">
+    <Grid>
+        <Label x:Name="missileSpeedLabel" Content="Missile Speed:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="constantRadio" Content="Constant" HorizontalAlignment="Left" Margin="23,36,0,0" VerticalAlignment="Top" GroupName="missileSpeed" Checked="missileSpeedChecked"/>
+        <RadioButton x:Name="increasingRadio" Content="Increasing" HorizontalAlignment="Left" Margin="23,56,0,0" VerticalAlignment="Top" GroupName="missileSpeed"/>
+        <RadioButton x:Name="standardRadio" Content="Standard (30 Milssiles)" Margin="0,36,25,0" VerticalAlignment="Top" GroupName="missileCount" HorizontalAlignment="Right" Width="137" Checked="missileCountSelected"/>
+        <Label x:Name="missileCountLabel" Content="Missile Count:" Margin="0,10,91,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="84"/>
+        <RadioButton x:Name="infiniteRadio" Content="Infinite" Margin="0,56,106,0" VerticalAlignment="Top" GroupName="missileCount" HorizontalAlignment="Right" Width="56" Checked="missileCountSelected"/>
+        <RadioButton x:Name="customCountRadio" Content="Custom:" Margin="0,76,100,0" VerticalAlignment="Top" GroupName="missileCount" HorizontalAlignment="Right" Width="62" Checked="missileCountSelected"/>
+        <TextBox x:Name="customCountTextBox" Height="23" Margin="0,96,25,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="120" IsEnabled="False" TextChanged="checkCustomMissileText"/>
+        <Label x:Name="citiesLabel" Content="Cities to Defend:" HorizontalAlignment="Left" Margin="23,130,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="citiesTextBox" HorizontalAlignment="Left" Height="23" Margin="33,161,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="citiesEntered"/>
+        <Button x:Name="acceptButton" Content="Accept" Margin="0,0,10,10" HorizontalAlignment="Right" Width="75" Height="20" VerticalAlignment="Bottom" Click="acceptButtonClicked"/>
+        <Button x:Name="cancelButton" Content="Cancel" HorizontalAlignment="Right" Margin="0,0,91,10" Width="75" Height="20" VerticalAlignment="Bottom" Click="cancelButton_Click"/>
+    </Grid>
+</Window>

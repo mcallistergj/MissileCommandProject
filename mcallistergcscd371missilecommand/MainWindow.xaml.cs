@@ -26,22 +26,24 @@ namespace mcallistergcscd371missilecommand
     DispatcherTimer defenderTimer;
     internal List<Missile> enemyMissiles = new List<Missile>();
     List<Missile> defendingMissiles = new List<Missile>();
-    private int number_of_defense_missiles;
+    internal int number_of_defense_missiles = 30;
     private int enemy_missile_to_launch;
     internal int enemy_missiles_live;
     private int enemy_missile_speed = 101;
     private int missile_launch_frequency = 2;
+    internal int cities_to_defend = 6;
+    internal bool increasing_missile_speed = false;
+    internal int level = 1;
+    internal int score = 0;
 
     public MainWindow()
     {
       InitializeComponent();
-      start_game();
     }
 
     public void start_game()
     {
-      number_of_defense_missiles = 30;
-      enemy_missile_to_launch = 3;
+      enemy_missile_to_launch = 20;
       enemy_missiles_live = 0;
       missileTimer = new DispatcherTimer();
       defenderTimer = new DispatcherTimer();
@@ -57,13 +59,14 @@ namespace mcallistergcscd371missilecommand
 
     private void next_level()
     {
-      if (enemy_missile_speed > 50)
+      if (increasing_missile_speed && enemy_missile_speed > 10)
       {
-        enemy_missile_speed -= 50;
+        enemy_missile_speed -= 10;
       }
       missileTimer.Stop();
       enemyLaunchTimer.Stop();
       defenderTimer.Stop();
+      level++;
       start_game();
     }
 
@@ -142,6 +145,7 @@ namespace mcallistergcscd371missilecommand
             enemy_missiles_live--;
           }
         }
+
       }
     }
 
@@ -151,9 +155,9 @@ namespace mcallistergcscd371missilecommand
       Missile missile = new Missile();
       Random rand = new Random();
       missile.X1 = rand.Next(0, 615);
-      missile.Y1 = -10;
+      missile.Y1 = 15;
       missile.X2 = rand.Next((int)missile.X1 - 2, (int)missile.X1 + 3);
-      missile.Y2 = 0;
+      missile.Y2 = 30;
       enemyMissiles.Add(missile);
       backgroundCanvas.Children.Add(missile.MissileLine);
       missileTimer.Start();
@@ -166,9 +170,9 @@ namespace mcallistergcscd371missilecommand
         Missile defenseMissile = new Missile();
         Point target = e.GetPosition(this);
         defenseMissile.X1 = backgroundCanvas.ActualWidth / 2;
-        defenseMissile.Y1 = backgroundCanvas.ActualHeight;
+        defenseMissile.Y1 = backgroundCanvas.ActualHeight - 20;
         defenseMissile.X2 = backgroundCanvas.ActualWidth / 2;
-        defenseMissile.Y2 = backgroundCanvas.ActualHeight;
+        defenseMissile.Y2 = backgroundCanvas.ActualHeight - 20;
         defenseMissile.Target = target;
         backgroundCanvas.Children.Add(defenseMissile.MissileLine);
         defendingMissiles.Add(defenseMissile);
@@ -177,6 +181,54 @@ namespace mcallistergcscd371missilecommand
       }
     }
 
+    private void endGame(object sender, RoutedEventArgs e)
+    {
+
+    }
+
+    private void setUpNewGame(object sender, EventArgs e)
+    {
+      OptionsWindow optionsWindow = new OptionsWindow(this);
+      optionsWindow.ShowDialog();
+    }
+
+    private void exitGame(object sender, EventArgs e)
+    {
+
+    }
+
+    private void openAboutWindow(object sender, EventArgs e)
+    {
+
+    }
+
+    private void checkForDestruction(Missile missile)
+    {
+      if(missile.X2 > 21 && missile.X2 < 98 && missile.Y2 > backgroundCanvas.ActualHeight - 40)
+      {
+        cities_to_defend--;
+        if(cities_to_defend < 4)
+        {
+          //city1Image.Visibility = false;
+        }
+      }
+      else if (missile.X2 > 140 && missile.X2 < 223 && missile.Y2 > backgroundCanvas.ActualHeight - 40)
+      {
+
+      }
+      else if (missile.X2 > 263 && missile.X2 < 349 && missile.Y2 > backgroundCanvas.ActualHeight - 40)
+      {
+
+      }
+      else if (missile.X2 > 401 && missile.X2 < 484 && missile.Y2 > backgroundCanvas.ActualHeight - 40)
+      {
+
+      }
+      else if (missile.X2 > 505 && missile.X2 < 591 && missile.Y2 > backgroundCanvas.ActualHeight - 40)
+      {
+
+      }
+    }
   }
 
 

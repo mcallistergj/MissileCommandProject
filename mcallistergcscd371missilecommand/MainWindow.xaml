@@ -7,8 +7,31 @@
         mc:Ignorable="d"
         Title="Missile Command" Height="423.25" Width="623.1">
     <Grid>
-        <Canvas x:Name="backgroundCanvas" Background="#FF283BF7" MouseLeftButtonDown="fireDefenseMissile">
-            <Button x:Name="missileTestButton" Content="Button" Canvas.Left="10" Canvas.Top="362" Width="75" Click="launchEnemyMissile"/>
+        <Canvas x:Name="backgroundCanvas" Background="#FF04040A" MouseLeftButtonDown="fireDefenseMissile">
+            <Menu Height="20" Width="615">
+                <MenuItem Header="Game">
+                    <MenuItem x:Name="startNewGameMenuItem" Header="New Game" HorizontalAlignment="Left" Click="setUpNewGame"/>
+                    <MenuItem x:Name="endGameMenuItem" Header="End Game" HorizontalAlignment="Left" Click="endGame"/>
+                    <Separator />
+                    <MenuItem x:Name="exitMenuItem" Header="Exit" HorizontalAlignment="Left" Click="exitGame"/>
+                </MenuItem>
+                <MenuItem Header="Help">
+                    <MenuItem x:Name="aboutMenuItem" Header="About" HorizontalAlignment="Left" Click="openAboutWindow"/>
+                </MenuItem>
+            </Menu>
+            <Image x:Name="image" Height="47" Canvas.Left="21" Canvas.Top="335" Width="77" Source="Images/Missile_Command_city.png"/>
+            <Image x:Name="city3Image" Height="47" Canvas.Left="401" Canvas.Top="335" Width="83" Source="Images/Missile_Command_city.png"/>
+            <Image x:Name="city4Image" Height="47" Canvas.Left="505" Canvas.Top="335" Width="86" Source="Images/Missile_Command_city.png"/>
+            <Image x:Name="city2Image" Height="47" Canvas.Left="140" Canvas.Top="335" Width="83" Source="Images/Missile_Command_city.png"/>
+            <Image x:Name="city1Image" Height="47" Canvas.Left="21" Canvas.Top="335" Width="77" Source="Images/Missile_Command_city.png"/>
+            <Image x:Name="batteryImage" Height="47" Canvas.Left="263" Canvas.Top="325" Width="86" Source="Images/MissileBattery.jpg"/>
+            <Label x:Name="label1" Content="Score: " Canvas.Left="10" Canvas.Top="25" Width="43" Foreground="#FFFFF9F9"/>
+            <Label x:Name="label2" Content="Level:" Canvas.Left="476" Canvas.Top="25" Width="40" Foreground="#FFFFF9F9"/>
+            <Canvas Height="20" Canvas.Top="372" Width="615" IsEnabled="False" Background="#FFD4D407">
+                <Label x:Name="missilesLabel" Content="Missiles Left: " Canvas.Left="10"/>
+            </Canvas>
+            <Label x:Name="scoreLabel" Content="" Canvas.Left="53" Canvas.Top="25" Foreground="#FFFFF7F7"/>
+            <Label x:Name="levelLabel" Content="" Canvas.Left="516" Canvas.Top="25" Foreground="#FFFBF1F1"/>
         </Canvas>
 
     </Grid>

@@ -60,6 +60,8 @@ namespace mcallistergcscd371missilecommand
             {
               enemyMissile.Exploded = true;
               mainWindow.enemy_missiles_live--;
+              mainWindow.score += 20;
+              mainWindow.scoreLabel.Content = mainWindow.score;
             }
           }
         }
